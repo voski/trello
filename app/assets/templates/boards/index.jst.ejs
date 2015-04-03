@@ -1,0 +1,7 @@
+<ul class="list-unstyled list-inline">
+  <% boards && boards.each(function(board){ %>
+    <li>
+      <%= board.escape('title') %>
+    </li>
+  <% }) %>
+</ul>

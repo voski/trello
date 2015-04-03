@@ -5,7 +5,8 @@ window.Trello = {
   Routers: {},
   initialize: function() {
     this.boards = new Trello.Collections.Boards();
-    this.boards.fetch();
+    new Trello.Routers.trello_router({$el: $('#main')});
+    Backbone.history.start();
   }
 };
 
