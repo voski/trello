@@ -4,9 +4,11 @@ window.Trello = {
   Views: {},
   Routers: {},
   initialize: function() {
+    this.boards = new Trello.Collections.Boards();
+    this.boards.fetch();
   }
 };
 
 $(document).ready(function(){
-  TrelloClone.initialize();
+  Trello.initialize();
 });
