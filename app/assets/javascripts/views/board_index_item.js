@@ -1,7 +1,7 @@
 Trello.Views.BoardIndexItem = Backbone.CompositeView.extend({
   template: JST['boards/index_item'],
   tagName: 'li',
-  className: 'col-md-3 text-center board-index-item',
+  className: 'col-md-3 board-index-item',
 
   events: {
     "click": "goToShow",
