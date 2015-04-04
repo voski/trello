@@ -15,7 +15,7 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addNewSub);
-    this.collection.each(function(board) {
+    this.collection.each(function (board) {
       var view = new Trello.Views.BoardIndexItem({model: board})
       this.addSubview('#board-list', view)
     }, this);
@@ -24,7 +24,6 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template();
     var newBoardContent = this.buttonTemplate();
-
     this.$el.html(content);
     this.$boardsList = this.$('#board-list')
     this.attachSubviews();
@@ -46,7 +45,6 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   endEditing: function (e) {
     e.preventDefault();
     var boardParams = $(e.currentTarget).serializeJSON();
-
     var board = new Trello.Models.Board(boardParams);
     board.save({}, {
       success: function () {
@@ -69,6 +67,4 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     $target = $(e.currentTarget);
     $target.removeClass("hover");
   },
-
-
 })
