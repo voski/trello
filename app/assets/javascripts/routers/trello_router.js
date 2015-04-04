@@ -11,7 +11,9 @@ Trello.Routers.trello_router = Backbone.Router.extend({
   },
 
   index: function () {
-    var view = new Trello.Views.BoardIndex({ collection: this.boards });
+    var view = new Trello.Views.BoardIndex({
+      collection: this.boards
+    });
     this.swapView(view);
   },
 

@@ -6,7 +6,7 @@ module Api
       if @board.save
         render json: @board
       else
-        render json: @board.errors.full_messages, status: :unprocessable_entity
+        render json: @board.errors.full_messages.join(', '), status: :unprocessable_entity
       end
     end
 

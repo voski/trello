@@ -23,13 +23,12 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
 
   render: function () {
     var content = this.template();
-    var newBoardButton = this.buttonTemplate();
+    var newBoardContent = this.buttonTemplate();
 
     this.$el.html(content);
-    this.$button = this.$('#newBoard');
-
+    this.$boardsList = this.$('#board-list')
     this.attachSubviews();
-    this.$button.html(newBoardButton());
+    this.$boardsList.append(newBoardContent());
     return this;
   },
 
@@ -41,22 +40,24 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   beginEditing: function () {
     this.addingBoard = true;
     this.render();
+    this.$('input').focus();
   },
 
   endEditing: function (e) {
     e.preventDefault();
     var boardParams = $(e.currentTarget).serializeJSON();
 
-    var newBoard = new Trello.Models.Board(boardParams);
-    newBoard.save({}, {
+    var board = new Trello.Models.Board(boardParams);
+    board.save({}, {
       success: function () {
         this.addingBoard = false;
-        this.collection.add(newBoard);
+        this.collection.add(board);
       }.bind(this),
 
-      error: function () {
-        alert('woops');
-      },
+      error: function (model, response) {
+        console.log(response)
+        this.$('input').attr('placeholder', response.responseText)
+      }.bind(this),
     });
   },
 
