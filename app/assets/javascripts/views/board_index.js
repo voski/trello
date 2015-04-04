@@ -6,8 +6,8 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    "mouseover .board-index-item": "toggleHover",
-    "mouseout  .board-index-item": "toggleHover",
+    "mouseover .board-index-item": "beginHover",
+    "mouseout  .board-index-item": "endHover",
     "click     .new-board-button": "beginEditing",
     "submit    form"             : "endEditing",
   },
@@ -42,13 +42,15 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     alert('rendering new board');
   },
 
-  toggleHover: function() {
-    var $target = $(event.target);
-    if ($target.css('background-color') === "rgb(102, 153, 153)" ) {
-      $target.css('background-color', '#eee')
-    } else {
-      $target.css('background-color', 'rgb(102, 153, 153)')
-    }
+  beginHover: function (e) {
+    $target = $(e.currentTarget);
+    $target.addClass("hover");
   },
+
+  endHover: function (e) {
+    $target = $(e.currentTarget);
+    $target.removeClass("hover");
+  },
+
 
 })
