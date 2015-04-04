@@ -2,7 +2,7 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   buttonTemplate: function() {
-    return (this.buttonOpen ? JST['board/new']: JST['boards/new_board_button']);
+    return (this.addingBoard ? JST['boards/new']: JST['boards/new_board_button']);
   },
 
   events: {
@@ -39,7 +39,25 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   },
 
   beginEditing: function () {
-    alert('rendering new board');
+    this.addingBoard = true;
+    this.render();
+  },
+
+  endEditing: function (e) {
+    e.preventDefault();
+    var boardParams = $(e.currentTarget).serializeJSON();
+
+    var newBoard = new Trello.Models.Board(boardParams);
+    newBoard.save({}, {
+      success: function () {
+        this.addingBoard = false;
+        this.collection.add(newBoard);
+      }.bind(this),
+
+      error: function () {
+        alert('woops');
+      },
+    });
   },
 
   beginHover: function (e) {
