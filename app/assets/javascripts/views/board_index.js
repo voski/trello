@@ -55,7 +55,6 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
       }.bind(this),
 
       error: function (model, response) {
-        console.log(response)
         this.$('input').attr('placeholder', response.responseText)
       }.bind(this),
     });
