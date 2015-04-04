@@ -6,8 +6,6 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    "mouseover .board-index-item": "beginHover",
-    "mouseout  .board-index-item": "endHover",
     "click     .new-board-button": "beginEditing",
     "submit    form"             : "endEditing",
   },
@@ -58,13 +56,4 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     });
   },
 
-  beginHover: function (e) {
-    $target = $(e.currentTarget);
-    $target.addClass("hover");
-  },
-
-  endHover: function (e) {
-    $target = $(e.currentTarget);
-    $target.removeClass("hover");
-  },
 })
