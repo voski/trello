@@ -1,5 +1,5 @@
 Trello.Models.Board = Backbone.Model.extend ({
-  urlRoot: 'api/boards/',
+  urlRoot: 'api/boards',
 
   parse: function (resp) {
     if (resp.lists) {
@@ -13,9 +13,9 @@ Trello.Models.Board = Backbone.Model.extend ({
 
   lists: function () {
     if (!this._lists) {
-      this._lists = Trello.Collections.Lists([], {board: this});
+      this._lists = new Trello.Collections.Lists([], {board: this});
     }
     return this._lists
   },
 
-})
+});
