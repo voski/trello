@@ -26,6 +26,7 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     this.$boardsList = this.$('#board-list')
     this.attachSubviews();
     this.$boardsList.append(newBoardContent());
+    
     return this;
   },
 
