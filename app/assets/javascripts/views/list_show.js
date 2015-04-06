@@ -1,6 +1,8 @@
 Trello.Views.ListShow = Backbone.CompositeView.extend({
   template: JST['lists/show'],
   tagName: 'li',
+  className: 'col-md-3 list',
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },
