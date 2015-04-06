@@ -16,5 +16,7 @@ Trello.Collections.Boards = Backbone.Collection.extend({
       board.fetch();
     }
     return board;
-  }
+  },
+
+
 })
