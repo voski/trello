@@ -1,7 +1,7 @@
 Trello.Collections.Boards = Backbone.Collection.extend({
   url: '/api/boards',
   model: Trello.Models.Board,
-
+  comparator: 'title',
   getOrFetch: function (id) {
     var board = this.get(id);
     var boards = this;
@@ -15,7 +15,7 @@ Trello.Collections.Boards = Backbone.Collection.extend({
     } else {
       board.fetch();
     }
-    
+
     return board;
   },
 

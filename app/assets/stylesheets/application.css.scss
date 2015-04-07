@@ -17,7 +17,7 @@
 @import "font-awesome";
 
 .col-md-3 {
-  background-color: #eee;
+  background-color: #ddd;
   font-size: 1.3em;
   font-weight: 700;
 }
@@ -34,9 +34,10 @@
 
 li.list {
   width: 260px;
-  height: 70px;
+  border-radius: 5px;
+  position: relative;
   margin: 10px 5px;
-  // padding: ;
+  // padding-bottom: 5px;
 }
 .new-board-button {
   font-size: 3em;
@@ -45,4 +46,28 @@ li.list {
 .board-index-item:hover {
   background-color: rgb(102, 153, 153);
   cursor: pointer;
+}
+
+
+.add-card:hover {
+  color: rgb(102, 153, 153);
+  cursor: pointer;
+}
+
+.cards-list > li {
+  background: #eee;
+  width: 100%;
+  border-radius: 5px;
+  height: 32px;
+}
+
+.cards-list {
+  list-style: none;
+  padding: 0;
+}
+
+li.add-card {
+  font-size: .85em;
+  color: rgb(150,150,150);
+  background: #ddd;
 }

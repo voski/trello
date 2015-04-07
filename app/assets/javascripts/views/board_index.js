@@ -6,8 +6,8 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click     .new-board-button": "beginEditing",
-    "submit    form"             : "endEditing",
+    "click     .new-board-button": "addBoard",
+    "submit    form"             : "submitBoard",
   },
 
   initialize: function () {
@@ -26,7 +26,7 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     this.$boardsList = this.$('#board-list')
     this.attachSubviews();
     this.$boardsList.append(newBoardContent());
-    
+
     return this;
   },
 
@@ -35,13 +35,13 @@ Trello.Views.BoardIndex = Backbone.CompositeView.extend({
     this.addSubview('#board-list', view);
   },
 
-  beginEditing: function () {
+  addBoard: function () {
     this.addingBoard = true;
     this.render();
     this.$('input').focus();
   },
 
-  endEditing: function (e) {
+  submitBoard: function (e) {
     e.preventDefault();
     var boardParams = $(e.currentTarget).serializeJSON();
     var board = new Trello.Models.Board(boardParams);
